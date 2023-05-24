@@ -4,6 +4,8 @@ import { useCallback, useState } from "react"
 import { useForm } from "react-hook-form"
 import { BsGithub, BsGoogle } from "react-icons/bs"
 import axios from "axios"
+import { toast } from "react-hot-toast"
+import { signIn } from 'next-auth/react'
 
 import Input from "../../components/inputs/Input"
 import Button from "../../components/Button"
@@ -34,9 +36,22 @@ export default function AuthForm(){
         if(variant === 'REGISTER'){
             //Axios Register
             axios.post('/api/register', data)
+            .catch(() => toast.error("Something went wrong!"))
+            .finally(() => setIsLoading(false))
         }
         if(variant === 'LOGIN'){
-            //NextAuth SignInk
+            //NextAuth SignIn
+            signIn('credentials', {
+                ...data,
+                redirect: false
+            }).then((callback) => {
+                if(callback?.error){
+                    toast.error("Invalid credentials")
+                }
+                if(callback?.ok &&!callback?.error){
+                    toast.success("Loged in!")
+                }
+            }).finally(() => setIsLoading(false))
         }
     }
     //Hanh dong
@@ -44,6 +59,17 @@ export default function AuthForm(){
         setIsLoading(true)
 
         //NextAuth Social Sign In
+        signIn(action, { redirect: false})
+        .then((callback) => {
+            if(callback?.error){
+                toast.error("Invalid credentials")
+            }
+            if(callback?.ok && !callback?.error){
+                toast.success("Loged in!")
+            }
+        })
+        .finally(() => setIsLoading(false))
+        //
     }
     return (
         <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
