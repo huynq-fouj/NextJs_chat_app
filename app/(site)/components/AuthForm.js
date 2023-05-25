@@ -45,7 +45,10 @@ export default function AuthForm(){
         if(variant === 'REGISTER'){
             //Axios Register
             axios.post('/api/register', data)
-            .then(() => signIn('credentials', data))
+            .then(() => {
+                signIn('credentials', data)
+                toast.success(`Hi ${data.name}!`)
+            })
             .catch(() => toast.error("Something went wrong!"))
             .finally(() => setIsLoading(false))
         }
