@@ -6,7 +6,7 @@ import GoogleProvider from "next-auth/providers/google";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 
 import prisma from "@/app/libs/prismadb";
-
+//Đăng nhập sử dụng NextAuth, còn tạo folder như này là do NextAuth bảo thế
 export const authOptions = {
     adapter: PrismaAdapter(prisma),
     providers: [
@@ -39,7 +39,7 @@ export const authOptions = {
                 if(!user || !user?.hashedPassword){
                     throw new Error("Invalid credentials");
                 }
-                //Check password
+                //So sánh mật khẩu người dùng nhập vào với mật khẩu đc mã hóa trên cơ sỏa dữ liệu
                 const isCorrectPassword = await bcrypt.compare(credentials.password, user.hashedPassword);
                 if(!isCorrectPassword){
                     throw new Error("Invalid credentials");

@@ -3,9 +3,7 @@ import Link from "next/link"
 import clsx from "clsx"
 import { MdOutlineRectangle } from "react-icons/md"
 
-export default function DesktopItem({label, icon, href, onClick, active}){
-
-    const Icon =  icon
+export default function DesktopItem({label, icon: Icon, href, onClick, active}){
 
     const handleClick = () => {
         if(onClick){

@@ -29,7 +29,6 @@ const useRoutes = () => {
             active: pathname == '/users'
         },
         {
-            //
             label:'Logout',
             href: '#',
             onClick: () => signOut(),

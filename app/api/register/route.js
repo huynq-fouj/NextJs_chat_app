@@ -7,11 +7,15 @@ export async function POST(request){
     try {
         const body = await request.json();
         const {email, name, password} = body;
+        //Kiểm tra đầy đủ dữ liệu cần thiết
         if(!email || !name || !password){
             return new NextResponse("Missing info", { status: 400 });
         }
 
+        //Mã hóa mật khẩu của người dùng
         const hashedPassword = await bcrypt.hash(password, 12);
+
+        //Tạo người dùng mới
         const user = await prima.user.create({
             data: {
                 email,

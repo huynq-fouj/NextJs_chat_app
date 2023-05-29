@@ -46,8 +46,11 @@ export default function AuthForm(){
             //Axios Register
             axios.post('/api/register', data)
             .then(() => {
-                signIn('credentials', data)
-                toast.success(`Hi ${data.name}!`)
+                //Sau khi gửi dữ liệu đi thì thực hiện đăng nhập
+                //redirect : false có thể tránh tải lại trang
+                signIn('credentials', { ...data, redirect: false})
+                .then(() => toast.success(`Hi ${data.name}!`))
+                .catch(() => toast.error('Error!'))
             })
             .catch(() => toast.error("Something went wrong!"))
             .finally(() => setIsLoading(false))
