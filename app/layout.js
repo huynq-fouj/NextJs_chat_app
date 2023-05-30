@@ -12,7 +12,6 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <AuthContext>
-          {/* Thêm toaster ở đây để nó có thể hoạt động ở mọi trang */}
           <ToasterContext/>
           {children}
         </AuthContext>

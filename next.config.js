@@ -10,7 +10,7 @@ const nextConfig = {
     //Thêm tên miền hình ảnh khi đăng nhập bằng các tài khoản khác
     images: {
         domains: [
-            "res.cloundinary.com",
+            "res.cloudinary.com",
             "avatars.githubusercontent.com",
             "lh3.googleusercontent.com"
         ]

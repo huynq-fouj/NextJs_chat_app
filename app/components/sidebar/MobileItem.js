@@ -3,8 +3,6 @@ import Link from "next/link"
 import clsx from "clsx"
 import { MdOutlineRectangle } from "react-icons/md"
 
-
-
 export default function MobileItem({ href, active, onClick, icon:Icon }){
 
     const handleClick = () => {

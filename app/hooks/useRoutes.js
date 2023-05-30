@@ -15,14 +15,14 @@ const useRoutes = () => {
     const { conversationId } = useConversation()
     const routes = useMemo(() => [
         {
-            //Đường dẫn đến cuộc hội thoại
+            //conversations site
             label: 'Chat',
             href: '/conversations',
             icon: HiChat,
             active: pathname == '/conversations' || !!conversationId
         },
         {
-            //Đường dẫn đến trang người dùng
+            //users site
             label: 'User',
             href: '/users',
             icon: HiUsers,
