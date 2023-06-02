@@ -1,2 +1,1 @@
-- npm install
-- npm run dev
+### Create Next.js app
