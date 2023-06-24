@@ -2,7 +2,7 @@
 
 import { useCallback, useMemo } from "react"
 import { useRouter } from "next/navigation"
-import { format } from "date-fns"
+import { formatDistanceToNow } from "date-fns"
 import { useSession } from "next-auth/react"
 import clsx from "clsx"
 
@@ -60,7 +60,7 @@ export default function ConversationBox({data, selected}){
                         </p>
                         {lastMessage?.createdAt && (
                             <p className="text-xs text-gray-400 font-light">
-                                {format(new Date(lastMessage.createdAt), 'p')}
+                                {formatDistanceToNow(new Date(lastMessage.createdAt), { addSuffix: true })}
                             </p>
                         )}
                     </div>
