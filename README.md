@@ -1,2 +1,1 @@
-### Create Next.js app
-## Pending...
+
